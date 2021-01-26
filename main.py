@@ -25,7 +25,9 @@ pc_score = 0
 draws = 0
 angle = 0
 angle_2 = 0
-cba = True
+cba = True # - these 2 variables are used in a function
+abc = True
+
 
 # ---Assets---
 ROCK = pygame.transform.scale((pygame.image.load(os.path.join('assets', 'rock.png')).convert_alpha()), (400,400))
@@ -69,12 +71,7 @@ def drawp_s(paper, player=True, pc=False):
         paper = pygame.transform.flip(paper,True,False)
         WIN.blit(paper, (WIDTH - paper.get_width(),HEIGHT/2 - paper.get_height()/2))
     pygame.display.update()
-abc = True
-# def drawscore():
-#     global player_score, pc_score, draws
-#     player_render = FONT.render(F'Your Score: {player_score}',1,BLACK)
-#     WIN.blit(player_render, (0,0))
-#     pygame.display.update()
+
 def shake(surface):
     global angle, angle_2, abc, cba, BLACK
     i = 0
@@ -90,17 +87,6 @@ def shake(surface):
         if angle <= -30:
             abc = True
 
-
-        # if cba == True:
-        #     angle_2 -= 1
-        # else:
-        #     angle_2 += 1
-
-        # if angle_2 >= -40:
-        #     cba = False
-        # if angle_2 <= 30:
-        #     cba = True
-    
         rock_flip = pygame.transform.flip(surface,True,False)
         
         rotated = pygame.transform.rotozoom(rock_flip, angle,1)
@@ -136,8 +122,6 @@ while run:
 
     draw_render = FONT.render(f'Draws: {draws}',1,BG)
     WIN.blit(draw_render, (WIDTH/2 - draw_render.get_width(), 0))
-    
-    # pygame.display.update()
 
     clock.tick(FPS)
     for event in pygame.event.get():
@@ -212,9 +196,3 @@ while run:
                 draws = 0
                 player_score = 0
                 pc_score = 0
-            
-    # drawscore()
-    # print(player_score, pc_score, draws)
-
-    # print(angle)
-    
