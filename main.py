@@ -75,6 +75,7 @@ def drawp_s(paper, player=True, pc=False):
 def shake(surface):
     global angle, angle_2, abc, cba, BLACK
     i = 0
+    # I made these number with trail and error so that it will rotate and get back to it's position
     THREE = 210*2
     while i != 70*2:
         if abc == True:
@@ -97,7 +98,6 @@ def shake(surface):
         sur_rect = rotated.get_rect(center = (WIDTH - surface.get_width() + 200, HEIGHT/2 - surface.get_height()/2 + 200))
 
         i +=1
-        # rect.centerx -= 1
         WIN.blit(rotated, rect)
         WIN.blit(rotated_pc, sur_rect)
         pygame.display.update()
